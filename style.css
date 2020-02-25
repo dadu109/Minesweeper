@@ -6,6 +6,147 @@
   font-family: 'Montserrat';
 }
 
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.wrapper .nav {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background-color: #dbdbdb;
+  -webkit-box-shadow: 10px 0px 36px 0px #636363;
+  box-shadow: 10px 0px 36px 0px #636363;
+  height: 100%;
+  position: relative;
+}
+
+.wrapper .nav .h1 {
+  width: 100%;
+  margin: 100px 0;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 4px 4px 5px rgba(149, 149, 149, 0.87);
+}
+
+.wrapper .nav .difficulties {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 70%;
+  margin: 0 auto 50px;
+}
+
+.wrapper .nav .difficulties .diff {
+  background: #adadad;
+  color: #fff;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1.5em;
+  padding: 25px 0;
+  margin: 3px 0;
+  border-top: 6px solid #eeeeee;
+  border-left: 6px solid #eeeeee;
+  border-right: 6px solid #414141;
+  border-bottom: 6px solid #414141;
+  cursor: pointer;
+}
+
+.wrapper .nav .difficulties .active {
+  background: #bebebe;
+  border-bottom: 6px solid #eeeeee;
+  border-right: 6px solid #eeeeee;
+  border-left: 6px solid #414141;
+  border-top: 6px solid #414141;
+}
+
+.wrapper .nav .button {
+  display: block;
+  margin: 10px auto;
+  width: 70%;
+  padding: 15px;
+  color: #fff;
+  text-align: center;
+  font-weight: bolder;
+  cursor: pointer;
+  font-size: 1.5em;
+  outline: none;
+}
+
+.wrapper .nav .restart {
+  background: #b84040;
+  border-top: 6px solid #ecc2c2;
+  border-left: 6px solid #ecc2c2;
+  border-right: 6px solid #3f2d2d;
+  border-bottom: 6px solid #3f2d2d;
+}
+
+.wrapper .nav .restart-pressed {
+  background: #923232;
+  border-top: 6px solid #3f2d2d;
+  border-left: 6px solid #3f2d2d;
+  border-right: 6px solid #f1dcdc;
+  border-bottom: 6px solid #f1dcdc;
+}
+
+.wrapper .nav .credits {
+  display: block;
+  width: 100%;
+  color: #000;
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+}
+
+.wrapper .nav .credits a {
+  text-decoration: none;
+  color: #1a6edb;
+}
+
+.wrapper .nav .credits a:visited {
+  color: #071ea5;
+}
+
+.wrapper .nav .timer {
+  text-align: center;
+  margin: 50px auto;
+  font-size: 2.5em;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 4px 4px 5px rgba(149, 149, 149, 0.87);
+}
+
+.root {
+  width: 80%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -75,5 +216,17 @@
 
 .color-5 {
   color: #f30909 !important;
+}
+
+.color-6 {
+  color: #f30986 !important;
+}
+
+.color-7 {
+  color: #bc09f3 !important;
+}
+
+.color-8 {
+  color: #7609f3 !important;
 }
 /*# sourceMappingURL=style.css.map */
