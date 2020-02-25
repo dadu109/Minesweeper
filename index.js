@@ -1,12 +1,14 @@
 const root = document.querySelector('.root')
 const restartButton = document.querySelector('.restart')
+const winDisplay = document.querySelector('.win')
 const allDiff = document.querySelectorAll('.diff')
 const timerDisplay = document.querySelector('.timer')
 const difficulties = {
-    "easy":{n:10,m:20},
+    "easy":{n:10,m:13},
     "mid":{n:17,m:40},
     "hard":{n:25,m:75}
 }
+let cells;
 let globalGridSize = difficulties.mid.n;
 let globalMinesAmount = difficulties.mid.m;
 let time = 0;
@@ -96,11 +98,11 @@ function renderGrid(dimention,mines){
             row.appendChild(cell);
         }
     }
-
+    cells = document.querySelectorAll('.cell');
 }
 
 function removeCover(t,grid){
-    if(!t.dataset.clicked==true){
+    if(!t.dataset.clicked===true){
         const dcs = (a,b) =>(document.querySelector(`[data-id="${grid[a][b].id}"]`))
         const [j,i] = grid.reduce((p,q)=>{
             const arr = q.filter(e=>e.id==t.dataset.id);
@@ -109,7 +111,10 @@ function removeCover(t,grid){
 
         t.dataset.clicked=true;
         t.classList.remove('cover')
-        if(grid[i][j].mine){gameLost(grid)}
+        if(grid[i][j].mine){
+            clearBoard(grid);
+            winDisplay.innerHTML = 'Przegałeś 😭😭';
+        }//przegrana
         if(grid[i][j].minesAround===0){
             if(grid[i-1]    && grid[i-1][j-1] && !grid[i-1][j-1].mine){ removeCover(dcs(i-1,j-1) ,grid)}
             if(grid[i-1]    && grid[i-1][j  ] && !grid[i-1][j  ].mine){ removeCover(dcs(i-1,j  ) ,grid)}
@@ -121,9 +126,10 @@ function removeCover(t,grid){
             if(grid[i+1]    && grid[i+1][j+1] && !grid[i+1][j+1].mine){ removeCover(dcs(i+1,j+1) ,grid)}
         }
     }
+    checkWin(grid);
 }
 
-function gameLost(grid){
+function clearBoard(grid){
     for (let i = 0; i < grid.length; i++) {
         for (let j = 0; j < grid.length; j++) {
             const e = document.querySelector(`[data-id="${grid[i][j].id}"]`);
@@ -135,9 +141,20 @@ function gameLost(grid){
     clearInterval(timer)
 }
 
+function checkWin(grid){
+    if((globalGridSize*globalGridSize)-document.querySelectorAll('[data-clicked~="true"]').length === globalMinesAmount){
+        clearInterval(timer)
+        let minutes = Math.floor(time / 60);
+        let seconds = time - minutes * 60;
+        winDisplay.innerHTML=`🎉🎉 Wygrałeś! 👑👑 <br> Twój czas to: ${minutes<10?"0"+minutes:minutes}:${seconds<10?"0"+seconds:seconds}`
+        clearBoard(grid);
+    }
+}
+
 function restartGame(){
     root.innerHTML='';
     renderGrid(globalGridSize,globalMinesAmount);
+    winDisplay.innerHTML='';
     restartTime();
 }
 
